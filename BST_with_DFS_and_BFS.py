@@ -105,30 +105,86 @@ class Tree:
             
         return current_node
     
+    
     #gets NODE with min value
     def _min_val(self, root):
         if root.left == None:
             return root
         return self._min_val(root.left)
-             
-                    
-                    
-# tr = Tree()
-# tr.insert(100)
-# tr.insert(50)
-# tr.insert(120)
-# tr.insert(110)
-# tr.insert(130)
-# tr.insert(105)
-# tr.insert(115)
-# tr.insert(125)
-# tr.insert(150)
-# tr.insert(103)
-# tr.insert(107)
-# tr.insert(112)
-# tr.insert(118)
-# tr.insert(119)
+    
+    
+    def BFS(self):
+        if self.root == None:
+            return None
+        result = []
+        queue = [self.root]
+        while queue:
+            current = queue.pop(0)
+            result.append(current.value)
+            if current.left != None:
+                queue.append(current.left)
+            if current.right != None:
+                queue.append(current.right)
+        return result
+    
+    
+    def DFS_PreOrder(self):
+        if self.root == None:
+            return None
+        result = []
+        def traverse(current):
+            result.append(current.value)
+            if current.left != None:
+                traverse(current.left)
+            if current.right != None:
+                traverse(current.right)
+        traverse(self.root)
+        return result
+    
+    
+    def DFS_PostOrder(self):
+        if self.root == None:
+            return None
+        result = []
+        def traverse(current):
+            if current.left != None:
+                traverse(current.left)
+            if current.right != None:
+                traverse(current.right)
+            result.append(current.value)
+        traverse(self.root)
+        return result
+    
+    
+    def DFS_InOrder(self):
+        if self.root == None:
+            return None
+        result = []
+        def traverse(current):
+            if current.left != None:
+                traverse(current.left)
+            result.append(current.value)
+            if current.right != None:
+                traverse(current.right)
+        traverse(self.root)
+        return result
+    
+    
+    
+tr = Tree()
+tr.insert(47)
+tr.insert(21)
+tr.insert(76)
+tr.insert(18)
+tr.insert(27)
+tr.insert(52)
+tr.insert(82)
 
-# tr.delete(115)
-# print(tr.root.right.left.right.right.value)
-# #print(tr.contains(118))
+print(f"       {tr.root.value}")
+print(f"   {tr.root.left.value}      {tr.root.right.value}")
+print(f" {tr.root.left.left.value}  {tr.root.left.right.value}  {tr.root.right.left.value}  {tr.root.right.right.value}")
+
+print(tr.BFS())
+print(tr.DFS_PreOrder())
+print(tr.DFS_PostOrder())
+print(tr.DFS_InOrder())
