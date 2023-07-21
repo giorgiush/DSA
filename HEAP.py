@@ -70,34 +70,3 @@ print(myheap.heap)
 myheap.remove()
 
 print(myheap.heap)
-
-
-myheap.remove()
-
-print(myheap.heap)
-
-myheap.remove()
-
-print(myheap.heap)
-myheap.remove()
-
-print(myheap.heap)
-myheap.remove()
-
-print(myheap.heap)
-myheap.remove()
-
-print(myheap.heap)
-myheap.remove()
-
-print(myheap.heap)
-
-
-"""
-    EXPECTED OUTPUT:
-    ----------------
-    [95, 75, 80, 55, 60, 50, 65]
-    [80, 75, 65, 55, 60, 50]
-    [75, 60, 65, 55, 50]
-
-"""
